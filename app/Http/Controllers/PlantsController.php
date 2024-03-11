@@ -51,6 +51,10 @@ class PlantsController extends Controller
     public function show(string $id)
     {
         //
+        $plant = Plant::find($id);
+        return Inertia::render('Plants/Show', [
+            'plant' => $plant,
+        ]);
     }
 
     /**

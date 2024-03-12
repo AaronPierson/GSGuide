@@ -8,4 +8,9 @@ use Illuminate\Database\Eloquent\Model;
 class Plant extends Model
 {
     use HasFactory;
+
+    public function gardens()
+    {
+        return $this->belongsToMany(Garden::class)->withPivot('quantity');
+    }
 }

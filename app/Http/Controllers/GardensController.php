@@ -91,6 +91,9 @@ class GardensController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        //delete the garden
+        Garden::destroy($id);
+        return redirect()->route('gardens.index');
+
     }
 }

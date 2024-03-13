@@ -20,6 +20,12 @@
                 <div v-for="garden in gardens" :key="garden.id" class="bg-white p-4 rounded-lg shadow-md">
                     <h2 class="text-xl font-bold mb-2">{{ garden.name }}</h2>
                     <p>{{ garden.description }}</p>
+                    <Link :href="route('gardens.show', garden.id)" class="bg-blue-500 text-white p-2 rounded mt-4">
+                        View Garden
+                    </Link>
+                    <Link :href="route('gardens.destroy', garden.id)" class="bg-red-500 text-white p-2 rounded mt-4">
+                        Delete Garden
+                    </Link>
                 </div>
             </div>
         </div>

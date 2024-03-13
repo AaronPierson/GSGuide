@@ -10,6 +10,7 @@
 </script>
 <template>
     <AppLayout>
+        
         <div>
             <h1>{{ plant.name }}</h1>
             <p>Family: {{ plant.family }}</p>

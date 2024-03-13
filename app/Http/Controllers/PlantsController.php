@@ -23,7 +23,7 @@ class PlantsController extends Controller
         // dd('testing 1');
 
         $plants = Plant::all();
-
+        
         return Inertia::render('Plants/Index', [
             'plants' => $plants,
         ]);

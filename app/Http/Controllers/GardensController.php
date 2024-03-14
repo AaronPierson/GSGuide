@@ -67,6 +67,12 @@ class GardensController extends Controller
     public function show(string $id)
     {
         //
+        $garden = Garden::find($id);
+
+        // dd($garden->name);
+        return Inertia::render('Gardens/Show', [
+            'garden' => $garden,
+        ]);
 
     }
 
@@ -92,6 +98,7 @@ class GardensController extends Controller
     public function destroy(string $id)
     {
         //delete the garden
+        dd($id);
         Garden::destroy($id);
         return redirect()->route('gardens.index');
 

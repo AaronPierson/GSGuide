@@ -1,6 +1,7 @@
 <script setup>
     import AppLayout from '@/Layouts/AppLayout.vue';
     import { Link } from '@inertiajs/vue3';
+    import Gardens from '@/Components/Gardens.vue';
     const props = defineProps({
         gardens: {
             type: Array,
@@ -11,21 +12,18 @@
 
 <template>
     <AppLayout>
-        <div class="container mx-auto">
-            <h1 class="text-3xl font-bold mb-8">Gardens</h1>
-                <Link :href="route('gardens.create')" class="bg-blue-500 text-white p-2 rounded">
+        <template #header>
+            <h2 class="font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight">
+                Gardens
+            </h2>
+        </template>
+        <div class="py-12 m-5">
+            <Link :href="route('gardens.create')" class="bg-blue-500 text-white p-2 rounded">
                     Create Garden
-                </Link>
-            <div class="grid grid-cols-3 gap-4">
-                <div v-for="garden in gardens" :key="garden.id" class="bg-white p-4 rounded-lg shadow-md">
-                    <h2 class="text-xl font-bold mb-2">{{ garden.name }}</h2>
-                    <p>{{ garden.description }}</p>
-                    <Link :href="route('gardens.show', garden.id)" class="bg-blue-500 text-white p-2 rounded mt-4">
-                        View Garden
-                    </Link>
-                    <Link :href="route('gardens.destroy', garden.id)" class="bg-red-500 text-white p-2 rounded mt-4">
-                        Delete Garden
-                    </Link>
+            </Link>
+            <div class="max-w-7xl mx-auto sm:px-6 lg:px-8 m-5">
+                <div class="bg-white dark:bg-gray-800 overflow-hidden shadow-xl sm:rounded-lg">
+                    <Gardens :gardens="gardens" />
                 </div>
             </div>
         </div>

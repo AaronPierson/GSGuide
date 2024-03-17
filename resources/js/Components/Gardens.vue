@@ -17,7 +17,7 @@
                         <Link :href="route('gardens.show', garden.id)" class="bg-blue-500 text-white mx-2 p-2 rounded">
                             View Garden
                         </Link>
-                        <Link :href="route('gardens.destroy', garden.id)" class="bg-red-500 text-white mx-2 p-2 rounded">
+                        <Link :href="`/gardens/${garden.id}`" method="DELETE" :data="garden.id" class="bg-red-500 text-white mx-2 p-2 rounded">
                             Delete Garden
                         </Link>
                     </div>

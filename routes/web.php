@@ -27,6 +27,9 @@ Route::get('/', function () {
 });
 
 Route::resource('plants', PlantsController::class);
+Route::resource('gardens', GardensController::class);
+
+Route::get('/plants/create/{id}', [PlantsController::class, 'create_garden_plant'])->name('create_garden_plant');
 
 Route::middleware([
     'auth:sanctum',
@@ -36,6 +39,5 @@ Route::middleware([
     Route::get('/dashboard', function () {
         return Inertia::render('Dashboard');
     })->name('dashboard');
-    Route::resource('gardens', GardensController::class);
 
 });

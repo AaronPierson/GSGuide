@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Inertia\Inertia;
 use App\Models\Plant;
+use App\Models\Garden;
 
 class PlantsController extends Controller
 {
@@ -35,6 +36,10 @@ class PlantsController extends Controller
     public function create()
     {
         //
+        $plants = Plant::all();
+        return Inertia::render('Plants/Create', [
+            'plants' => $plants,
+        ]);
     }
 
     /**
@@ -42,7 +47,21 @@ class PlantsController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        //returns a array of Plant objects
+        //and garden id
+        //I need this into a pivot table
+        // $garden = Garden::find($request->garden_id);
+        // $garden->plants()->attach($request->plants);
+
+        $plants = Plant::find($request->plants);
+        foreach ($plants as $plant) {
+            $plant->gardens()->attach($request->garden_id);
+        }
+
+        // $plants = Plant::find($request->plants);
+        // $plants->gardens()->attach($request->garden_id);
+        dd($plants);
+
     }
 
     /**
@@ -79,5 +98,16 @@ class PlantsController extends Controller
     public function destroy(string $id)
     {
         //
+    }
+
+    public function create_garden_plant(string $id)
+    {
+        //show a form that saves plants to garden
+        $plants = Plant::all();
+        // dd($plants);
+        return Inertia::render('Plants/Create', [
+            'plants' => $plants,
+            'garden_id' => $id,
+        ]);
     }
 }

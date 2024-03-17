@@ -10,6 +10,10 @@
         }
     });
 
+    let submit = () => {
+        form.post(route('plants.store'));
+    };
+
 </script>
 <template>
     <AppLayout>

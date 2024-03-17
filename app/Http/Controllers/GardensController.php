@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Garden;
 use Inertia\Inertia;
+use App\Models\Plant;
 
 class GardensController extends Controller
 {
@@ -82,6 +83,8 @@ class GardensController extends Controller
     public function edit(string $id)
     {
         //
+        //Load plant data
+        return Inertia::render('Gardens/Edit');
     }
 
     /**
@@ -90,6 +93,16 @@ class GardensController extends Controller
     public function update(Request $request, string $id)
     {
         //
+        // dd($request->garden['name']);
+        $garden = Garden::find($id);
+        $garden->name = $request->garden['name'];
+        $garden->location = $request->garden['location'];
+        $garden->description = $request->garden['description'];
+        $garden->save();
+
+        return redirect()->route('gardens.index');
+
+        
     }
 
     /**
@@ -98,7 +111,7 @@ class GardensController extends Controller
     public function destroy(string $id)
     {
         //delete the garden
-        dd($id);
+        // dd($id);
         Garden::destroy($id);
         return redirect()->route('gardens.index');
 

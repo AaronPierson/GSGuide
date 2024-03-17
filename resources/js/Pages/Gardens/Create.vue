@@ -16,8 +16,12 @@
 </script>
 <template>
     <AppLayout>
+        <template #header>
+            <h1 class="class=font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight">
+                <h1 class="text-2xl font-bold mb-4">Create Garden</h1>
+            </h1>
+        </template>
         <div>
-            <h1 class="text-2xl font-bold mb-4">Create Garden</h1>
             <form @submit.prevent="submit" class="max-w-md">
                 <div class="mb-4">
                     <label for="name" class="block font-medium">Name:</label>
